@@ -1,9 +1,17 @@
 import type { NextPage } from 'next';
 
+import Footer from '../../components/Footer';
+import Stats from '../../components/Stats';
+import WeekWorkout from '../../components/WeekWorkouts';
+import Navbar from '../../components/Navbar';
+
 const Dashboard: NextPage = () => {
     return (
         <div>
-            <h1>Dashboard</h1>
+            <Navbar />
+            <Stats />
+            <WeekWorkout />
+            <Footer />
         </div>
     );
 };

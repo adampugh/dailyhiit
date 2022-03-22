@@ -11,9 +11,7 @@ const Hero = () => {
                     <p className='max-w-md mx-auto pt-6'>
                         Designed with productivity in mind , make sure that you keep up with your goals with our Daily
                         HIIT App. Track your weekly progress. Add HIIT workouts from some of the world’s greatest
-                        trainers to make sure you feel the burn. There are over 20+ workouts for all different workout
-                        needs and goals. Available on desktop and mobile, simply start your workout and see the results
-                        appear.
+                        trainers to make sure you feel the burn.
                     </p>
                     <SignUpButton />
                 </div>

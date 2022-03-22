@@ -1,9 +1,12 @@
 import type { NextPage } from 'next';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 
 const Workouts: NextPage = () => {
     return (
         <div>
-            <h1>Workouts</h1>
+            <Navbar />
+            <Footer />
         </div>
     );
 };
