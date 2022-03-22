@@ -2,14 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 
-const workout = {
-    id: '123',
-    time: 10,
-    title: 'THE ULTIMATE HIIT WORKOUT BODY BLAST',
-    intensity: '2',
-    img: '/images/mobile.png',
-};
-
 const Card = ({ id, time, title, intensity, img }) => {
     return (
         <div
