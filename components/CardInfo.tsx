@@ -29,7 +29,9 @@ const CardInfo = (workout) => {
                     })}
                     <div className='h-full w-1 rounded-3xl bg-gradient-to-b from-[#7253A0] to-[#E8A0AC] absolute top-0'></div>
                 </div>
-                <Button text='ADD WORKOUT' />
+                <div className='text-center'>
+                    <Button text='ADD WORKOUT' />
+                </div>
             </div>
         </div>
     );
