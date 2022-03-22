@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
 
-const Workout: NextPage = () => {
+const Start: NextPage = () => {
     return (
         <div>
             <Navbar />
@@ -11,4 +11,4 @@ const Workout: NextPage = () => {
     );
 };
 
-export default Workout;
+export default Start;

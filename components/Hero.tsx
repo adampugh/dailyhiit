@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import SignUpButton from './SignUpButton';
+import Button from './Button';
 
 const Hero = () => {
     return (
@@ -13,7 +13,7 @@ const Hero = () => {
                         HIIT App. Track your weekly progress. Add HIIT workouts from some of the world’s greatest
                         trainers to make sure you feel the burn.
                     </p>
-                    <SignUpButton />
+                    <Button text='SIGN UP' />
                 </div>
             </div>
         </div>

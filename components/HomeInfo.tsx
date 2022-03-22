@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import SignUpButton from './SignUpButton';
+import Button from './Button';
 
 const HomeInfo = () => {
     return (
@@ -14,7 +14,7 @@ const HomeInfo = () => {
                         needs and goals. Available on desktop and mobile, simply start your workout and see the results
                         appear.
                     </p>
-                    <SignUpButton />
+                    <Button text='SIGN UP' />
                 </div>
                 <div className='text-right'>
                     <Image src='/images/dashboard.png' alt='daily hiit logo' width={500} height={500} />

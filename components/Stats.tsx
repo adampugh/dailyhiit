@@ -1,4 +1,5 @@
 import Card from './Card';
+import { workouts } from '../utils/data';
 
 const Stats = () => {
     return (
@@ -9,9 +10,8 @@ const Stats = () => {
             </div>
             <div className='mt-10 mb-10 grid grid-cols-3'>
                 <div className=''>
-                    <Card />
+                    <Card {...workouts[0]} />
                 </div>
-
                 <div className='col-span-2 rounded-3xl bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70 pr-12 pl-12 pt-6 pb-6'>
                     <div className='flex justify-between text-center justify-items-center'>
                         <div>

@@ -15,7 +15,7 @@ const Footer = () => {
                 </Link>
                 <p>© 2022 Design by Kokonoka</p>
                 <div className='text-right'>
-                    <p>204 Hawley RD.</p>
+                    <p>204 Hawley Rd.</p>
                     <p>Water Town</p>
                     <p>LR4 8BH</p>
                 </div>
