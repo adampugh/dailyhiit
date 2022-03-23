@@ -3,9 +3,10 @@ import Button from './Button';
 interface InfoProps {
     title: string;
     exercises: [{ name: string; time: number; id: string }];
+    button?: boolean;
 }
 
-const Info = ({ title, exercises }: InfoProps) => {
+const Info = ({ title, exercises, button = true }: InfoProps) => {
     return (
         <div className=' mt-6 mb-6 p-5 bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70'>
             <h2 className='font-heading'>{title}</h2>
@@ -20,9 +21,11 @@ const Info = ({ title, exercises }: InfoProps) => {
                 })}
                 <div className='h-full w-1 rounded-3xl bg-gradient-to-b from-[#7253A0] to-[#E8A0AC] absolute top-0'></div>
             </div>
-            <div className='text-center'>
-                <Button text='ADD WORKOUT' />
-            </div>
+            {button && (
+                <div className='text-center'>
+                    <Button text='ADD WORKOUT' />
+                </div>
+            )}
         </div>
     );
 };

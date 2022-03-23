@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import Card from './Card';
 import { workouts } from '../utils/data';
 
@@ -9,8 +11,12 @@ const Stats = () => {
                 <h3>Tuesday 22nd March, 2022</h3>
             </div>
             <div className='mt-10 mb-10 grid grid-cols-3'>
-                <div className=''>
-                    <Card {...workouts[0]} />
+                <div>
+                    <Link href='/start'>
+                        <a>
+                            <Card {...workouts[0]} />
+                        </a>
+                    </Link>
                 </div>
                 <div className='col-span-2 rounded-3xl bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70 pr-12 pl-12 pt-6 pb-6'>
                     <div className='flex justify-between text-center justify-items-center'>

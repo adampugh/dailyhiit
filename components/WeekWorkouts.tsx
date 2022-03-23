@@ -1,7 +1,16 @@
+import Link from 'next/link';
 import Card from './Card';
 import ScrollCards from './ScrollCards';
 
 import { weeklyWorkouts } from '../utils/data';
+
+const CardLink = (props) => (
+    <Link href='/workouts'>
+        <a className='cursor-grab'>
+            <Card {...props} />
+        </a>
+    </Link>
+);
 
 const WeekWorkouts = () => {
     return (
