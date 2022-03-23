@@ -26,6 +26,7 @@ a {
     box-sizing: border-box;
 }
 
+/* Hides x scroll w/ npm package */
 .react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
     display: none;
 }
@@ -33,4 +34,9 @@ a {
 .react-horizontal-scrolling-menu--scroll-container {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+}
+
+.blur {
+    /* filter: blur(0.3rem); */
+    backdrop-filter: blur(2px);
 }
