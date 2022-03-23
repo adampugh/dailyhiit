@@ -14,6 +14,7 @@ const AppFeatures = () => {
                             <FontAwesomeIcon
                                 style={{ height: '12px', paddingBottom: '2px', color: 'grey' }}
                                 icon={faDumbbell}
+                                className='inline'
                             />{' '}
                             TOTAL WORKOUT LENGTH
                         </h3>
@@ -25,6 +26,7 @@ const AppFeatures = () => {
                             <FontAwesomeIcon
                                 style={{ height: '12px', paddingBottom: '2px', color: 'grey' }}
                                 icon={faDumbbell}
+                                className='inline'
                             />{' '}
                             TRACK THE NEXT EXERCISE
                         </h3>
@@ -36,6 +38,7 @@ const AppFeatures = () => {
                             <FontAwesomeIcon
                                 style={{ height: '12px', paddingBottom: '2px', color: 'grey' }}
                                 icon={faDumbbell}
+                                className='inline'
                             />{' '}
                             CURRENT WORKOUT
                         </h3>
@@ -47,6 +50,7 @@ const AppFeatures = () => {
                             <FontAwesomeIcon
                                 style={{ height: '12px', paddingBottom: '2px', color: 'grey' }}
                                 icon={faDumbbell}
+                                className='inline'
                             />{' '}
                             TRACK YOUR TIME
                         </h3>
@@ -58,6 +62,7 @@ const AppFeatures = () => {
                             <FontAwesomeIcon
                                 style={{ height: '12px', paddingBottom: '2px', color: 'grey' }}
                                 icon={faDumbbell}
+                                className='inline'
                             />{' '}
                             LIST OF UPCOMING EXERCISES
                         </h3>

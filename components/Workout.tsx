@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
+import { formatSecondsCondensed, formatSeconds } from '../utils/formatSeconds';
 
 const workout1 = {
     id: '123',
@@ -8,11 +9,11 @@ const workout1 = {
     category: ['upperBody', 'fullBody'],
     time: '10 Mins',
     intensity: '2',
-    img: '/images/mobile.png',
+    img: 'https://i.pinimg.com/originals/fe/67/38/fe6738f530d373ca6eaaad4fa57fa1a5.jpg',
     exercises: [
-        { id: '1', name: 'Pressups', time: 1 },
-        { id: '2', name: 'Sit Ups', time: 1 },
-        { id: '3', name: 'Jumping Jacks', time: 1 },
+        { id: '1', name: 'Pressups', time: 73 },
+        { id: '2', name: 'Sit Ups', time: 11 },
+        { id: '3', name: 'Jumping Jacks', time: 62 },
         { id: '4', name: 'Rest', time: 1 },
     ],
 };
@@ -81,7 +82,9 @@ const Workout = () => {
                         <h1 className='text-3xl font-heading'>COMPLETED!</h1>
                     ) : (
                         <>
-                            <h1 className='text-8xl font-heading'>{seconds === -1 ? 0 : seconds}</h1>
+                            <h1 className='text-8xl font-heading'>
+                                {seconds === -1 ? formatSecondsCondensed(0) : formatSecondsCondensed(seconds)}
+                            </h1>
                             <h2 className='text-3xl font-heading'>{exerciseName}</h2>
                         </>
                     )}
@@ -91,7 +94,9 @@ const Workout = () => {
                         <>
                             <h2 className='font-heading'>NEXT</h2>
                             <h2 className='font-heading'>
-                                {nextExercise.time > 0 ? `${nextExercise.name} - ${nextExercise.time}` : 'COMPLETE'}
+                                {nextExercise.time > 0
+                                    ? `${nextExercise.name} - ${formatSeconds(nextExercise.time)}`
+                                    : 'COMPLETE'}
                             </h2>
                         </>
                     )}
@@ -109,12 +114,12 @@ const Workout = () => {
                                 key={i}></div>
                         ))}
                     </div>
-                    <div className='mt-10 mb-10 relative'>
+                    <div className='mt-10 mb-10 relative w-96'>
                         {exercises.map(({ name, time, id }) => {
                             return (
                                 <div className='ml-5 flex justify-between' key={id}>
                                     <p>{name}</p>
-                                    <p>{time} SECS</p>
+                                    <p>{formatSeconds(time)}</p>
                                 </div>
                             );
                         })}

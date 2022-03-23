@@ -1,8 +1,15 @@
 import Button from './Button';
+import { formatSeconds } from '../utils/formatSeconds';
+
+interface Exercise {
+    name: string;
+    time: number;
+    id: string;
+}
 
 interface InfoProps {
     title: string;
-    exercises: [{ name: string; time: number; id: string }];
+    exercises: Exercise[];
     button?: boolean;
 }
 
@@ -15,7 +22,7 @@ const Info = ({ title, exercises, button = true }: InfoProps) => {
                     return (
                         <div className='ml-5 flex justify-between' key={id}>
                             <p>{name}</p>
-                            <p>{time} SECS</p>
+                            <p>{formatSeconds(time)}</p>
                         </div>
                     );
                 })}

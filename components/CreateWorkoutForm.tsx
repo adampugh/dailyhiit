@@ -1,11 +1,9 @@
 import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 
 import Card from './Card';
 import Info from './Info';
-import Button from './Button';
 
 const workout1 = {
     id: '123',
