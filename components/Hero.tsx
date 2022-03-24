@@ -1,4 +1,5 @@
-import SignUpButton from './SignUpButton';
+import Button from './Button';
+import Link from 'next/link';
 
 const Hero = () => {
     return (
@@ -13,7 +14,11 @@ const Hero = () => {
                         trainers to make sure you feel the burn.
                     </p>
                     <div className='flex justify-center'>
-                        <SignUpButton />
+                        <Link href='/login'>
+                            <a>
+                                <Button text='SIGN UP' />
+                            </a>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import SignUpButton from './SignUpButton';
+import Button from './Button';
 
 const Navbar = () => {
     return (
@@ -13,7 +13,11 @@ const Navbar = () => {
                 </Link>
                 <Image src='/images/dumbbell.png' alt='daily hiit logo' height={40} width={40} />
                 <div className='w-52'>
-                    <SignUpButton />
+                    <Link href='/login'>
+                        <a>
+                            <Button text='SIGN UP' />
+                        </a>
+                    </Link>
                 </div>
             </div>
         </nav>

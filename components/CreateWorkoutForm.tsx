@@ -30,7 +30,7 @@ const CreateWorkoutForm = () => {
     };
 
     return (
-        <div className=' rounded-3xl p-10 max-w-screen-sm bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70 mx-auto'>
+        <div className='rounded-3xl p-10 max-w-screen-sm bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70 mx-auto'>
             <Formik initialValues={initialValues} onSubmit={handleOnSubmit}>
                 {({
                     values,
