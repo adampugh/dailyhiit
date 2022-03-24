@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Button from './Button';
+import UserButton from './UserButton';
 
 const HomeInfo = () => {
     return (
@@ -17,7 +17,7 @@ const HomeInfo = () => {
                     </p>
                     <Link href='/login'>
                         <a>
-                            <Button text='SIGN UP' />
+                            <UserButton text='SIGN UP' />
                         </a>
                     </Link>
                 </div>

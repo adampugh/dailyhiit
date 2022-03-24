@@ -6,18 +6,16 @@ import Link from 'next/link';
 import { useAuth } from '../context/AuthUserContext';
 import Button from './Button';
 
-const LoginInForm = () => {
+const SignUpForm = () => {
     const router = useRouter();
     const [error, setError] = useState(null);
-    const { signInWithEmailAndPassword } = useAuth();
+    const { createUserWithEmailAndPassword } = useAuth();
 
     const handleOnSubmit = ({ email, password }, { setSubmitting }) => {
         setSubmitting(true);
         setError(null);
-        signInWithEmailAndPassword(email, password)
+        createUserWithEmailAndPassword(email, password) // sign up
             .then((authUser) => {
-                console.log('Success. The user is created in Firebase');
-                console.log(authUser);
                 setSubmitting(false);
                 router.push('/dashboard');
             })
@@ -29,7 +27,7 @@ const LoginInForm = () => {
 
     return (
         <div className='mx-auto rounded-3xl p-10 max-w-screen-sm bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70 mx-auto w-96'>
-            <h1 className='font-heading text-center'>LOGIN</h1>
+            <h1 className='font-heading text-center'>SIGN UP</h1>
             <h1 className='text-red-400 text-center'>{error}</h1>
             <Formik
                 initialValues={{ email: '', password: '' }}
@@ -67,9 +65,9 @@ const LoginInForm = () => {
 
                         <div className='mt-10 text-center'>
                             <div className='pb-5'>
-                                <Link href='/signup'>
+                                <Link href='/login'>
                                     <a>
-                                        Don't have an account? <span className='text-purple-400'>Sign up!</span>
+                                        Already have an account? <span className='text-purple-400'>Log in!</span>
                                     </a>
                                 </Link>
                             </div>
@@ -82,4 +80,4 @@ const LoginInForm = () => {
     );
 };
 
-export default LoginInForm;
+export default SignUpForm;
