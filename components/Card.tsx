@@ -5,8 +5,9 @@ import { useEffect, useState } from 'react';
 import { formatSeconds, calculateTotalTime } from '../utils/formatSeconds';
 import { useRouter } from 'next/router';
 import { useUser } from '../context/UserContext';
+import { WorkoutType } from '../types';
 
-const Card = ({ id, time, title, intensity, img, exercises, index }) => {
+const Card = ({ title, intensity, img, exercises, index }: WorkoutType) => {
     const [totalTime, setTotalTime] = useState('');
     const [canDelete, setCanDelete] = useState(false);
     const { asPath } = useRouter();

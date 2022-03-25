@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
-const DefaultCard = ({ index }) => {
-    const handleClick = () => {
-        console.log(index);
-    };
+type DefaultCardPropsType = {
+    index: number;
+};
 
+const DefaultCard = ({ index }: DefaultCardPropsType) => {
     return (
         <div
             className='rounded-3xl h-96 w-64 pt-6 pb-4 text-center flex flex-col justify-center pl-8 pr-8 inline-block'
@@ -17,7 +17,7 @@ const DefaultCard = ({ index }) => {
                     pathname: '/workouts',
                     query: { index },
                 }}>
-                <a className='border rounded-3xl p-2' onClick={handleClick}>
+                <a className='border rounded-3xl p-2'>
                     <h1 className='font-heading'>+ ADD WORKOUT</h1>
                 </a>
             </Link>

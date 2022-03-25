@@ -1,16 +1,12 @@
 import Button from './Button';
 import { useUser } from '../context/UserContext';
 import { formatSeconds } from '../utils/formatSeconds';
+import { WorkoutType } from '../types';
 
-interface Exercise {
-    name: string;
-    time: number;
-    id: string;
-}
-
-const Info = (workout) => {
+const Info = (workout: WorkoutType) => {
     const { title, exercises, button = true } = workout;
     const { addWorkout } = useUser();
+    console.log(workout);
 
     return (
         <div className=' mt-6 mb-6 p-5 w-64 bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70'>
