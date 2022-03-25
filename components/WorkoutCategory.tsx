@@ -32,7 +32,8 @@ const WorkoutCategory = () => {
                         setUpperBodyWorkouts((prevWorkouts) => [...prevWorkouts, workout]);
                     if (categoryName === 'lowerBody')
                         setLowerBodyWorkouts((prevWorkouts) => [...prevWorkouts, workout]);
-                    if (categoryName === 'fullBody') setfullBodyWorkouts((prevWorkouts) => [...prevWorkouts, workout]);
+                    if (categoryName === 'fullBody')
+                        setfullBodyWorkouts((prevWorkouts) => [...prevWorkouts, workout, workout]);
                 });
             });
         }

@@ -9,7 +9,7 @@ type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
 const ScrollCards = ({ cards, Component }) => {
     useEffect(() => {
         setScrollBarWidth();
-    }, []);
+    }, [cards]);
 
     const { dragStart, dragStop, dragMove, dragging } = useDrag();
     const handleDrag =
