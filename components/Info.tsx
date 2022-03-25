@@ -15,7 +15,7 @@ interface InfoProps {
 
 const Info = ({ title, exercises, button = true }: InfoProps) => {
     return (
-        <div className=' mt-6 mb-6 p-5 bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70'>
+        <div className=' mt-6 mb-6 p-5 w-64 bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70'>
             <h2 className='font-heading'>{title}</h2>
             <div className='mt-10 mb-10 relative'>
                 {exercises.map(({ name, time, id }) => {

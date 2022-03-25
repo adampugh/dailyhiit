@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Card from './Card';
 import ScrollCards from './ScrollCards';
-import LogOutButton from './LogOutButton';
 
 import { weeklyWorkouts } from '../utils/data';
 

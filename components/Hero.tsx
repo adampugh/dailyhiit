@@ -1,5 +1,4 @@
 import UserButton from './UserButton';
-import Link from 'next/link';
 
 const Hero = () => {
     return (
@@ -14,11 +13,7 @@ const Hero = () => {
                         trainers to make sure you feel the burn.
                     </p>
                     <div className='flex justify-center'>
-                        <Link href='/login'>
-                            <a>
-                                <UserButton text='SIGN UP' />
-                            </a>
-                        </Link>
+                        <UserButton text='SIGN UP' />
                     </div>
                 </div>
             </div>

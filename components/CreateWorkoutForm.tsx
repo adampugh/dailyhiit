@@ -1,36 +1,52 @@
+import { useState } from 'react';
 import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { db } from '../lib/firebase';
 
 import Card from './Card';
 import Info from './Info';
 
-const workout1 = {
-    id: '123',
-    title: 'ULTIMATE BODY WORKOUT',
-    category: ['upperBody', 'fullBody'],
-    time: '10 Mins',
-    intensity: '2',
-    img: '/images/mobile.png',
-    exercises: [
-        { id: '1', name: 'Pressups', time: 1 },
-        { id: '2', name: 'Sit Ups', time: 1 },
-        { id: '3', name: 'Jumping Jacks', time: 1 },
-        { id: '4', name: 'Rest', time: 1 },
-    ],
-};
+// const workout1 = {
+//     id: '123',
+//     title: 'ULTIMATE BODY WORKOUT',
+//     category: ['upperBody', 'fullBody'],
+//     time: '10 Mins',
+//     intensity: '2',
+//     img: '/images/mobile.png',
+//     exercises: [
+//         { id: '1', name: 'Pressups', time: 1 },
+//         { id: '2', name: 'Sit Ups', time: 1 },
+//         { id: '3', name: 'Jumping Jacks', time: 1 },
+//         { id: '4', name: 'Rest', time: 1 },
+//     ],
+// };
 
 const initialValues = { title: '', category: [], intensity: '', img: '', exercises: [{ name: '', time: 0, id: '0' }] };
 
 const CreateWorkoutForm = () => {
-    const handleOnSubmit = (values, { setSubmitting }) => {
-        console.log(values);
-        // calculate time
-        // create id
+    const [message, setMessage] = useState('');
+
+    const handleOnSubmit = (values, { setSubmitting, resetForm }) => {
+        setSubmitting(true);
+
+        db.collection('workouts')
+            .add({ ...values })
+            .then((docRef) => {
+                setSubmitting(false);
+                resetForm();
+                setMessage('Added Workout');
+            })
+            .catch((error) => {
+                setSubmitting(false);
+                resetForm();
+                setMessage('Error adding workout: ' + error.message);
+            });
     };
 
     return (
         <div className='rounded-3xl p-10 max-w-screen-sm bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70 mx-auto'>
+            <h1 className='text-center pt-2 pb-2'>{!!message && message}</h1>
             <Formik initialValues={initialValues} onSubmit={handleOnSubmit}>
                 {({
                     values,

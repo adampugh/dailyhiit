@@ -73,7 +73,7 @@ const LoginInForm = () => {
                                     </a>
                                 </Link>
                             </div>
-                            <Button text='LOGIN / SIGN UP' disabled={isSubmitting} />
+                            <Button text='LOGIN' disabled={isSubmitting} />
                         </div>
                     </Form>
                 )}

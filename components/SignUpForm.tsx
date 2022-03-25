@@ -71,7 +71,7 @@ const SignUpForm = () => {
                                     </a>
                                 </Link>
                             </div>
-                            <Button text='LOGIN / SIGN UP' disabled={isSubmitting} />
+                            <Button text='SIGN UP' disabled={isSubmitting} />
                         </div>
                     </Form>
                 )}
