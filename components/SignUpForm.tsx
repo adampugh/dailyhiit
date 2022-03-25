@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { useAuth } from '../context/AuthUserContext';
+import { FormValues, FormEvents, ErrorType } from '../types';
+
 import Button from './Button';
 
 const weeklyWorkouts = {
@@ -22,7 +24,7 @@ const SignUpForm = () => {
     const [error, setError] = useState(null);
     const { createUserWithEmailAndPassword } = useAuth();
 
-    const handleOnSubmit = ({ email, password }, { setSubmitting }) => {
+    const handleOnSubmit = ({ email, password }: FormValues, { setSubmitting }: FormEvents) => {
         setSubmitting(true);
         setError(null);
         createUserWithEmailAndPassword(email, password) // sign up
@@ -57,7 +59,7 @@ const SignUpForm = () => {
             <Formik
                 initialValues={{ email: '', password: '' }}
                 validate={(values) => {
-                    const errors = {};
+                    const errors: ErrorType = {};
                     if (!values.email) {
                         errors.email = 'Required';
                     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {

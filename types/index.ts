@@ -16,3 +16,17 @@ export type WorkoutType = {
     intensity: string;
     button?: boolean;
 };
+
+export type FormValues = {
+    email: string;
+    password: string;
+};
+
+export type FormEvents = {
+    setSubmitting: (value: boolean) => void;
+};
+
+export type ErrorType = {
+    email?: string;
+    password?: string;
+};
