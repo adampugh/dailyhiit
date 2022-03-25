@@ -18,8 +18,6 @@ const LoginInForm = () => {
         setError(null);
         signInWithEmailAndPassword(email, password)
             .then((authUser) => {
-                console.log('Success. The user is created in Firebase');
-                console.log(authUser);
                 setSubmitting(false);
                 router.push('/dashboard');
             })

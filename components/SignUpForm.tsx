@@ -31,7 +31,6 @@ const SignUpForm = () => {
             .then((authUser) => {
                 setSubmitting(false);
                 const { uid } = authUser.user.multiFactor.user;
-                console.log('uid ', uid);
 
                 db.collection('users')
                     .doc(uid)
