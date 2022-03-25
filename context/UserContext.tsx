@@ -3,6 +3,7 @@ import { db } from '../lib/firebase';
 import { useAuth } from '../context/AuthUserContext';
 import { useRouter } from 'next/router';
 import { getDayIndex } from '../utils/dates';
+import { WorkoutType } from '../types';
 
 const getQueryParams = (query) => {
     const getParams = (params, param) => {
@@ -18,7 +19,7 @@ const userContext = createContext({
     weeklyWorkouts: [],
     weeklyStats: [],
     todaysWorkout: {},
-    addWorkout: async () => {},
+    addWorkout: async (workout: WorkoutType) => {},
     deleteWorkout: async (index: number) => {},
 });
 

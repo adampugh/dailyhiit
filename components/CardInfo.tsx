@@ -1,7 +1,8 @@
+import { WorkoutType } from '../types';
 import Card from './Card';
 import Info from './Info';
 
-const CardInfo = (workout) => {
+const CardInfo = (workout: WorkoutType) => {
     return (
         <>
             <Card {...workout} />

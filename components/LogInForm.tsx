@@ -6,12 +6,21 @@ import Link from 'next/link';
 import { useAuth } from '../context/AuthUserContext';
 import Button from './Button';
 
+type formValues = {
+    email: string;
+    password: string;
+};
+
+type formEvents = {
+    setSubmitting: (value: boolean) => void;
+};
+
 const LoginInForm = () => {
     const router = useRouter();
     const [error, setError] = useState(null);
     const { signInWithEmailAndPassword } = useAuth();
 
-    const handleOnSubmit = ({ email, password }, { setSubmitting }) => {
+    const handleOnSubmit = ({ email, password }: formValues, { setSubmitting }: formEvents) => {
         setSubmitting(true);
         setError(null);
         signInWithEmailAndPassword(email, password)
@@ -69,7 +78,7 @@ const LoginInForm = () => {
                             <div className='pb-5'>
                                 <Link href='/signup'>
                                     <a>
-                                        Don't have an account? <span className='text-purple-400'>Sign up!</span>
+                                        Don&apos;t have an account? <span className='text-purple-400'>Sign up!</span>
                                     </a>
                                 </Link>
                             </div>
