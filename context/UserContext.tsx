@@ -15,6 +15,14 @@ const getQueryParams = (query) => {
     return query ? (/^[?#]/.test(query) ? query.slice(1) : query).split('&').reduce(getParams, {}) : {};
 };
 
+type UserContextType = {
+    weeklyWorkouts: WorkoutType[] | [];
+    weeklyStats: [];
+    todaysWorkout: WorkoutType | {};
+    addWorkout: (workout: WorkoutType) => {};
+    deleteWorkout: (index: number) => {};
+};
+
 const userContext = createContext({
     weeklyWorkouts: [],
     weeklyStats: [],
@@ -24,7 +32,8 @@ const userContext = createContext({
 });
 
 export function UserContextProvider({ children }) {
-    const [weeklyWorkouts, setWeeklyWorkouts] = useState(null);
+    // update these - might break if checking for null
+    const [weeklyWorkouts, setWeeklyWorkouts] = useState([null]);
     const [weeklyStats, setWeeklyStats] = useState(null);
     const [todaysWorkout, setTodaysWorkout] = useState(null);
     const { authUser } = useAuth();
@@ -47,7 +56,7 @@ export function UserContextProvider({ children }) {
         }
     }, [authUser]);
 
-    const addWorkout = (workout) => {
+    const addWorkout = (workout: WorkoutType) => {
         const { index } = getQueryParams(window.location.search);
         db.collection('users')
             .doc(`${authUser.uid}`)
@@ -60,7 +69,6 @@ export function UserContextProvider({ children }) {
     };
 
     const deleteWorkout = (index: number) => {
-        console.log('deleting');
         db.collection('users')
             .doc(`${authUser.uid}`)
             .update({ [`weeklyWorkouts.${index}`]: {} })
@@ -68,7 +76,7 @@ export function UserContextProvider({ children }) {
             .catch((error) => console.log('Error adding workout: ' + error.message));
     };
 
-    const userData = {
+    const userData: UserContextType = {
         weeklyWorkouts,
         weeklyStats,
         todaysWorkout,
