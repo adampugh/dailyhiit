@@ -3,34 +3,26 @@ import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { useEffect, useState } from 'react';
 import { formatSeconds, calculateTotalTime } from '../utils/formatSeconds';
-import { db } from '../lib/firebase';
-import { useAuth } from '../context/AuthUserContext';
+import { useRouter } from 'next/router';
+import { useUser } from '../context/UserContext';
 
 const Card = ({ id, time, title, intensity, img, exercises, index }) => {
     const [totalTime, setTotalTime] = useState('');
-    const { authUser } = useAuth();
+    const [canDelete, setCanDelete] = useState(false);
+    const { asPath } = useRouter();
+    const { deleteWorkout } = useUser();
 
     useEffect(() => {
-        console.log('changing');
         const totalTime = calculateTotalTime(exercises);
         const formattedTime = formatSeconds(totalTime);
         setTotalTime(formattedTime);
     }, []);
 
-    const handleDeleteWorkout = () => {
-        console.log('deleting');
-        db.collection('users')
-            .doc(`${authUser.uid}`)
-            .update({
-                [`weeklyWorkouts.${index}`]: {},
-            })
-            .then(() => {
-                console.log('deleted');
-            })
-            .catch((error) => {
-                console.log('Error adding workout: ' + error.message);
-            });
-    };
+    useEffect(() => {
+        if (asPath === '/dashboard') {
+            setCanDelete(true);
+        }
+    }, []);
 
     return (
         <div
@@ -43,8 +35,14 @@ const Card = ({ id, time, title, intensity, img, exercises, index }) => {
                 <div>
                     <FontAwesomeIcon icon={faClock} /> {totalTime}
                 </div>
-                <div onClick={handleDeleteWorkout}>
-                    <FontAwesomeIcon icon={faTrashCan} />
+                <div>
+                    {canDelete && (
+                        <FontAwesomeIcon
+                            icon={faTrashCan}
+                            onClick={() => deleteWorkout(index)}
+                            className='cursor-pointer'
+                        />
+                    )}
                 </div>
             </div>
             <div className='absolute bottom-10'>

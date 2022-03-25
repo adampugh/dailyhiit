@@ -1,20 +1,8 @@
-// import { collection, getCollection, doc, getDoc } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 
-import ScrollCards from './ScrollCards';
-import CardInfo from './CardInfo';
-
-import { useEffect, useState } from 'react';
-
-// const filteredWorkouts = workouts => {
-
-//     return {
-//         upperBody: workouts.filter(({ category }) => category.includes('upperBody')),
-//         lowerBody:  workouts.filter(({ category }) => category.includes('upperBody')),
-//         fullBody:  workouts.filter(({ category }) => category.includes('upperBody'))
-//     }
-// }
+import Category from './Category';
 
 const WorkoutCategory = () => {
     const [upperBodyWorkouts, setUpperBodyWorkouts] = useState([]);
@@ -41,22 +29,9 @@ const WorkoutCategory = () => {
 
     return (
         <>
-            <div className='container'>
-                <h2 className='font-heading pt-10'>UPPER BODY</h2>
-                <ScrollCards cards={upperBodyWorkouts} Component={CardInfo} />
-            </div>
-            <div className='bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70'>
-                <div className='container'>
-                    <h2 className='font-heading pt-10'>LOWER BODY</h2>
-                    <ScrollCards cards={lowerBodyWorkouts} Component={CardInfo} />
-                </div>
-            </div>
-            <div className='bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70'>
-                <div className='container'>
-                    <h2 className='font-heading pt-10'>FULL BODY</h2>
-                    <ScrollCards cards={fullBodyWorkouts} Component={CardInfo} />
-                </div>
-            </div>
+            <Category categoryWorkouts={upperBodyWorkouts} title='UPPER BODY' />
+            <Category categoryWorkouts={lowerBodyWorkouts} title='LOWER BODY' />
+            <Category categoryWorkouts={fullBodyWorkouts} title='FULL BODY' />
         </>
     );
 };

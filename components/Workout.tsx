@@ -2,21 +2,7 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { formatSecondsCondensed, formatSeconds } from '../utils/formatSeconds';
-
-const workout1 = {
-    id: '123',
-    title: 'ULTIMATE BODY WORKOUT',
-    category: ['upperBody', 'fullBody'],
-    time: '10 Mins',
-    intensity: '2',
-    img: 'https://i.pinimg.com/originals/fe/67/38/fe6738f530d373ca6eaaad4fa57fa1a5.jpg',
-    exercises: [
-        { id: '1', name: 'Pressups', time: 73 },
-        { id: '2', name: 'Sit Ups', time: 11 },
-        { id: '3', name: 'Jumping Jacks', time: 62 },
-        { id: '4', name: 'Rest', time: 1 },
-    ],
-};
+import { useUser } from '../context/UserContext';
 
 const Workout = () => {
     const [running, setRunning] = useState(false);
@@ -25,7 +11,8 @@ const Workout = () => {
     const [exerciseIndex, setExerciseIndex] = useState(0);
     const [exerciseName, setExerciseName] = useState('');
     const [nextExercise, setNextExercise] = useState({ name: '', id: '', time: 0 });
-    const { time, img, exercises, title, intensity } = workout1;
+    const { todaysWorkout } = useUser();
+    const { time, img, exercises, title, intensity } = todaysWorkout;
 
     useEffect(() => {
         if (!exercises[exerciseIndex]) {

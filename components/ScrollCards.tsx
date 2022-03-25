@@ -11,7 +11,6 @@ type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
 const ScrollCards = ({ cards, Component }) => {
     useEffect(() => {
         setScrollBarWidth();
-        setTimeout(() => {}, 3000);
     }, [cards]);
 
     const { dragStart, dragStop, dragMove, dragging } = useDrag();
