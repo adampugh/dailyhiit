@@ -2,19 +2,35 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { useEffect, useState } from 'react';
+import { formatSeconds, calculateTotalTime } from '../utils/formatSeconds';
+import { db } from '../lib/firebase';
+import { useAuth } from '../context/AuthUserContext';
 
-const calculateTotalTime = (exercisesArr: []) => {
-    // let total = 0;
-    // exercisesArr.map(({ time }: {time: number}) => total += time)
-    return exercisesArr.reduce((acc, { time }) => acc + time, 0);
-};
-
-const Card = ({ id, time, title, intensity, img, exercises }) => {
-    const [totalTime, setTotalTime] = useState(0);
+const Card = ({ id, time, title, intensity, img, exercises, index }) => {
+    const [totalTime, setTotalTime] = useState('');
+    const { authUser } = useAuth();
 
     useEffect(() => {
-        setTotalTime(calculateTotalTime(exercises));
+        console.log('changing');
+        const totalTime = calculateTotalTime(exercises);
+        const formattedTime = formatSeconds(totalTime);
+        setTotalTime(formattedTime);
     }, []);
+
+    const handleDeleteWorkout = () => {
+        console.log('deleting');
+        db.collection('users')
+            .doc(`${authUser.uid}`)
+            .update({
+                [`weeklyWorkouts.${index}`]: {},
+            })
+            .then(() => {
+                console.log('deleted');
+            })
+            .catch((error) => {
+                console.log('Error adding workout: ' + error.message);
+            });
+    };
 
     return (
         <div
@@ -27,7 +43,7 @@ const Card = ({ id, time, title, intensity, img, exercises }) => {
                 <div>
                     <FontAwesomeIcon icon={faClock} /> {totalTime}
                 </div>
-                <div>
+                <div onClick={handleDeleteWorkout}>
                     <FontAwesomeIcon icon={faTrashCan} />
                 </div>
             </div>

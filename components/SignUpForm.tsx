@@ -1,10 +1,21 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useState } from 'react';
+import { db } from '../lib/firebase';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { useAuth } from '../context/AuthUserContext';
 import Button from './Button';
+
+const weeklyWorkouts = {
+    0: {},
+    1: {},
+    2: {},
+    3: {},
+    4: {},
+    5: {},
+    6: {},
+};
 
 const SignUpForm = () => {
     const router = useRouter();
@@ -17,7 +28,21 @@ const SignUpForm = () => {
         createUserWithEmailAndPassword(email, password) // sign up
             .then((authUser) => {
                 setSubmitting(false);
-                router.push('/dashboard');
+                const { uid } = authUser.user.multiFactor.user;
+                console.log('uid ', uid);
+
+                db.collection('users')
+                    .doc(uid)
+                    .set({
+                        weeklyWorkouts,
+                        weeklyStats: {},
+                    })
+                    .then((docRef) => {
+                        router.push('/dashboard');
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
             })
             .catch((error) => {
                 setSubmitting(false);

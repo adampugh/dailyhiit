@@ -17,3 +17,7 @@ export const formatSecondsCondensed = (seconds: number) => {
         return `0:0${seconds}`;
     }
 };
+
+export const calculateTotalTime = (exercisesArr: []) => {
+    return exercisesArr.reduce((acc, { time }) => acc + time, 0);
+};

@@ -1,23 +1,24 @@
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import Card from './Card';
 import ScrollCards from './ScrollCards';
 
-import { weeklyWorkouts } from '../utils/data';
+const WeekWorkouts = ({ weeklyWorkouts }) => {
+    const [weeklyWorkoutsArray, setWeeklyWorkoutsArray] = useState([]);
 
-const CardLink = (props) => (
-    <Link href='/workouts'>
-        <a className='cursor-grab'>
-            <Card {...props} />
-        </a>
-    </Link>
-);
+    useEffect(() => {
+        const workouts = [];
+        for (let key in weeklyWorkouts) {
+            workouts[key] = weeklyWorkouts[key];
+        }
+        setWeeklyWorkoutsArray(workouts);
+    }, [weeklyWorkouts]);
 
-const WeekWorkouts = () => {
     return (
         <div className='bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70 pt-10 pb-10'>
             <div className='container'>
                 <h3>This Week&apos;s Workouts</h3>
-                <ScrollCards Component={Card} cards={weeklyWorkouts} />
+                {weeklyWorkoutsArray && <ScrollCards Component={Card} cards={weeklyWorkoutsArray} />}
             </div>
         </div>
     );

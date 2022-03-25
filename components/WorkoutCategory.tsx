@@ -5,7 +5,6 @@ import { db } from '../lib/firebase';
 import ScrollCards from './ScrollCards';
 import CardInfo from './CardInfo';
 
-import { weeklyWorkouts } from '../utils/data';
 import { useEffect, useState } from 'react';
 
 // const filteredWorkouts = workouts => {
@@ -26,7 +25,7 @@ const WorkoutCategory = () => {
         async function fetchWorkouts() {
             const querySnapshot = await getDocs(collection(db, 'workouts'));
             querySnapshot.forEach((doc) => {
-                const workout = doc.data();
+                const workout = { id: doc.id, ...doc.data() };
                 workout.category.map((categoryName: string) => {
                     if (categoryName === 'upperBody')
                         setUpperBodyWorkouts((prevWorkouts) => [...prevWorkouts, workout]);
@@ -42,12 +41,9 @@ const WorkoutCategory = () => {
 
     return (
         <>
-            <div>
-                <div className='container'>
-                    {/* <div className='pl-32 pr-0 ml-auto'> */}
-                    <h2 className='font-heading pt-10'>UPPER BODY</h2>
-                    <ScrollCards cards={upperBodyWorkouts} Component={CardInfo} />
-                </div>
+            <div className='container'>
+                <h2 className='font-heading pt-10'>UPPER BODY</h2>
+                <ScrollCards cards={upperBodyWorkouts} Component={CardInfo} />
             </div>
             <div className='bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70'>
                 <div className='container'>
