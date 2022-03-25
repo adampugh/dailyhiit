@@ -6,7 +6,7 @@ import { getDayIndex } from '../utils/dates';
 import { WorkoutType } from '../types';
 
 const getQueryParams = (query) => {
-    const getParams = (params, param) => {
+    const getParams = (params, param: string) => {
         const [key, value] = param.split('=');
         params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
         return params;

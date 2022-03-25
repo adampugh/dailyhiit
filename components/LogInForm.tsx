@@ -4,23 +4,16 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { useAuth } from '../context/AuthUserContext';
+import { FormValues, FormEvents, ErrorType } from '../types';
+
 import Button from './Button';
-
-type formValues = {
-    email: string;
-    password: string;
-};
-
-type formEvents = {
-    setSubmitting: (value: boolean) => void;
-};
 
 const LoginInForm = () => {
     const router = useRouter();
     const [error, setError] = useState(null);
     const { signInWithEmailAndPassword } = useAuth();
 
-    const handleOnSubmit = ({ email, password }: formValues, { setSubmitting }: formEvents) => {
+    const handleOnSubmit = ({ email, password }: FormValues, { setSubmitting }: FormEvents) => {
         setSubmitting(true);
         setError(null);
         signInWithEmailAndPassword(email, password)
@@ -43,7 +36,7 @@ const LoginInForm = () => {
             <Formik
                 initialValues={{ email: '', password: '' }}
                 validate={(values) => {
-                    const errors = {};
+                    const errors: ErrorType = {};
                     if (!values.email) {
                         errors.email = 'Required';
                     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {

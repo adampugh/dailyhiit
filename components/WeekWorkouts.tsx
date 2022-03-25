@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { WorkoutType } from '../types';
 import Card from './Card';
 import ScrollCards from './ScrollCards';
 
