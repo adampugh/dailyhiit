@@ -10,17 +10,16 @@ import DefaultCard from './DefaultCard';
 const Stats = () => {
     const { todaysWorkout } = useUser();
     const date = format(new Date(), 'eeee do MMMM, y');
-    console.log(new Date());
 
     return (
         <>
             {todaysWorkout && (
                 <div className='container'>
                     <div className='flex justify-between pt-10'>
-                        <h3>Today&apos;s Workout</h3>
+                        <h3 className='font-heading'>TODAY&apos;S WORKOUT</h3>
                         <h3>{date}</h3>
                     </div>
-                    <div className='mt-10 mb-10 grid grid-cols-3'>
+                    <div className='mt-4 mb-10 grid grid-cols-3'>
                         <div>
                             {todaysWorkout.title ? (
                                 <Link href='/start'>
@@ -36,7 +35,7 @@ const Stats = () => {
                             <div className='flex justify-between text-center justify-items-center'>
                                 <div>
                                     <h3>Current Streak</h3>
-                                    <p className='text-purple-400 pt-2 font-heading'>17 days</p>
+                                    <p className='text-purple-400 pt-2 font-heading'>17 DAYS</p>
                                 </div>
                                 <div>
                                     <h3>Workouts Completed</h3>
@@ -44,7 +43,7 @@ const Stats = () => {
                                 </div>
                                 <div>
                                     <h3>Workout Time</h3>
-                                    <p className='text-purple-400 pt-2 font-heading'>3 hours</p>
+                                    <p className='text-purple-400 pt-2 font-heading'>3 HOURS</p>
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,6 @@
 import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
+import { useAuth } from '../context/AuthUserContext';
 import Head from 'next/head';
 
 import Navbar from '../components/Navbar';
@@ -6,8 +8,18 @@ import Hero from '../components/Hero';
 import HomeInfo from '../components/HomeInfo';
 import AppFeatures from '../components/AppFeatures';
 import Footer from '../components/Footer';
+import { useEffect } from 'react';
 
 const Home: NextPage = () => {
+    const router = useRouter();
+    const { authUser } = useAuth();
+
+    useEffect(() => {
+        if (authUser) {
+            router.push('/dashboard');
+        }
+    }, [authUser]);
+
     return (
         <div>
             <Head>

@@ -18,7 +18,7 @@ const WeekWorkouts = ({ weeklyWorkouts }) => {
     return (
         <div className='bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70 pt-10 pb-10'>
             <div className='container'>
-                <h3>This Week&apos;s Workouts</h3>
+                <h3 className='font-heading'>THIS WEEK&apos;S WORKOUTS</h3>
                 {weeklyWorkoutsArray && <ScrollCards Component={Card} cards={weeklyWorkoutsArray} />}
             </div>
         </div>

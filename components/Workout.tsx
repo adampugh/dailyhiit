@@ -14,6 +14,8 @@ const Workout = () => {
     const { todaysWorkout } = useUser();
     const { time, img, exercises, title, intensity } = todaysWorkout;
 
+    console.log(time);
+
     useEffect(() => {
         if (!exercises[exerciseIndex]) {
             setCompleted(true);

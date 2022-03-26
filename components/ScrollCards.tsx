@@ -26,14 +26,14 @@ const ScrollCards = ({ cards, Component }) => {
 
     return (
         <div className='overflow-x-hidden mr-break-out'>
-            <div className='pt-10 mr-break-out' onMouseLeave={dragStop}>
+            <div className='pt-6 mr-break-out' onMouseLeave={dragStop}>
                 <ScrollMenu onMouseDown={() => dragStart} onMouseUp={() => dragStop} onMouseMove={handleDrag}>
                     {cards &&
                         cards.map((props, i) => {
                             const marginRight = cards.length - 1 === i ? 'mr-96' : 'mr-5';
                             return (
                                 props !== null && (
-                                    <div className={`${marginRight} cursor-grab select-none`} key={props.title}>
+                                    <div className={`${marginRight} cursor-grab select-none`} key={i}>
                                         {props.title ? <Component {...props} index={i} /> : <DefaultCard index={i} />}
                                     </div>
                                 )

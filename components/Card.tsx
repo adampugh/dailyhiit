@@ -32,16 +32,16 @@ const Card = ({ title, intensity, img, exercises, index }: WorkoutType) => {
                 backgroundImage: `linear-gradient(4deg, rgba(18,18,18,0.8743872549019608) 0%, rgba(91,91,91,0.5466561624649859) 35%, rgba(0,212,255,0) 100%), url("${img}")`,
                 backgroundSize: 'cover',
             }}>
-            <div className='flex justify-between'>
-                <div>
-                    <FontAwesomeIcon icon={faClock} /> {totalTime}
+            <div className='relative'>
+                <div className='absolute '>
+                    <FontAwesomeIcon icon={faClock} className='h-4 inline' /> {totalTime}
                 </div>
-                <div>
+                <div className='right-0 absolute'>
                     {canDelete && (
                         <FontAwesomeIcon
                             icon={faTrashCan}
                             onClick={() => deleteWorkout(index)}
-                            className='cursor-pointer'
+                            className='cursor-pointer h-4'
                         />
                     )}
                 </div>

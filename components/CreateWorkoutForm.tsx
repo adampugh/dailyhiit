@@ -185,16 +185,17 @@ const CreateWorkoutForm = () => {
                             )}
                         </FieldArray>
 
-                        {values.img && values.exercises.length > 1 && (
+                        {values.img && values.exercises.length > 1 && values.title && (
                             <div>
                                 <h2 className='font-heading mt-10'>PREVIEW</h2>
                                 <div className='grid grid-cols-2'>
                                     <Card
-                                        time={'10 MINS'}
+                                        time={360}
                                         title={values.title}
                                         intensity={values.intensity}
                                         img={values.img}
                                         id={'123'}
+                                        exercises={values.exercises}
                                     />
                                     <Info title={values.title} exercises={values.exercises} button={false} />
                                 </div>

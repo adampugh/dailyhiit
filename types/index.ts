@@ -15,6 +15,7 @@ export type WorkoutType = {
     category: Category[];
     intensity: string;
     button?: boolean;
+    time?: number;
 };
 
 export type FormValues = {
