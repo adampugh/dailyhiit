@@ -6,28 +6,21 @@ import { db } from '../lib/firebase';
 
 import Card from './Card';
 import Info from './Info';
-
-// const workout1 = {
-//     id: '123',
-//     title: 'ULTIMATE BODY WORKOUT',
-//     category: ['upperBody', 'fullBody'],
-//     time: '10 Mins',
-//     intensity: '2',
-//     img: '/images/mobile.png',
-//     exercises: [
-//         { id: '1', name: 'Pressups', time: 1 },
-//         { id: '2', name: 'Sit Ups', time: 1 },
-//         { id: '3', name: 'Jumping Jacks', time: 1 },
-//         { id: '4', name: 'Rest', time: 1 },
-//     ],
-// };
+import { Workout } from '../types';
 
 const initialValues = { title: '', category: [], intensity: '', img: '', exercises: [{ name: '', time: 0, id: '0' }] };
+type CreateWorkoutFormType = {
+    setSubmitting: (value: boolean) => void;
+    resetForm: () => void;
+};
 
 const CreateWorkoutForm = () => {
     const [message, setMessage] = useState('');
 
-    const handleOnSubmit = (values, { setSubmitting, resetForm }) => {
+    const handleOnSubmit = (
+        values: Workout | typeof initialValues,
+        { setSubmitting, resetForm }: CreateWorkoutFormType
+    ) => {
         setSubmitting(true);
 
         db.collection('workouts')
@@ -48,12 +41,7 @@ const CreateWorkoutForm = () => {
         <div className='rounded-3xl p-10 max-w-screen-sm bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70 mx-auto'>
             <h1 className='text-center pt-2 pb-2'>{!!message && message}</h1>
             <Formik initialValues={initialValues} onSubmit={handleOnSubmit}>
-                {({
-                    values,
-                    handleSubmit,
-                    isSubmitting,
-                    /* and other goodies */
-                }) => (
+                {({ values, handleSubmit, isSubmitting }) => (
                     <Form onSubmit={handleSubmit}>
                         <label htmlFor='firstName' className='block font-heading'>
                             TITLE
@@ -196,8 +184,19 @@ const CreateWorkoutForm = () => {
                                         img={values.img}
                                         id={'123'}
                                         exercises={values.exercises}
+                                        index={0}
+                                        category={values.category}
                                     />
-                                    <Info title={values.title} exercises={values.exercises} button={false} />
+                                    <Info
+                                        title={values.title}
+                                        exercises={values.exercises}
+                                        button={false}
+                                        id={'123'}
+                                        category={values.category}
+                                        intensity={values.intensity}
+                                        img={values.img}
+                                        index={0}
+                                    />
                                 </div>
                             </div>
                         )}

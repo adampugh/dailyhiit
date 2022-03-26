@@ -36,9 +36,14 @@ const SignUpForm = () => {
                     .doc(uid)
                     .set({
                         weeklyWorkouts,
-                        weeklyStats: {},
+                        weeklyStats: {
+                            completedWorkouts: 0,
+                            totalWorkoutTime: 0,
+                            currentStreak: { lastWorkout: '', addedToday: false, streakCount: 0 },
+                            workoutGraphData: {},
+                        },
                     })
-                    .then((docRef) => {
+                    .then(() => {
                         router.push('/dashboard');
                     })
                     .catch((error) => {
@@ -88,7 +93,6 @@ const SignUpForm = () => {
                             className='text-purple-900 pl-2 pr-2 rounded-3xl w-full'
                         />
                         <ErrorMessage name='password' component='div' />
-
                         <div className='mt-10 text-center'>
                             <div className='pb-5'>
                                 <Link href='/login'>

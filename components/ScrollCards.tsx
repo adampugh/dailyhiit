@@ -1,17 +1,24 @@
 import { useEffect } from 'react';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import setScrollBarWidth from 'set-scrollbar-width';
+import { Workout } from '../types';
 
 import useDrag from '../utils/useDrag';
 import Card from './Card';
 import DefaultCard from './DefaultCard';
 
 type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
+type ScrollCardsPropType = {
+    // cards: Workout[];
+    // Component: React.ReactNode;
+    showDay?: boolean;
+};
 
-const ScrollCards = ({ cards, Component }) => {
+const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+const ScrollCards = ({ cards, Component, showDay = false }: ScrollCardsPropType) => {
     useEffect(() => {
         setScrollBarWidth();
-        // setTimeout(() => {}, 3000);
     }, [cards]);
 
     const { dragStart, dragStop, dragMove, dragging } = useDrag();
@@ -29,12 +36,17 @@ const ScrollCards = ({ cards, Component }) => {
             <div className='pt-6 mr-break-out' onMouseLeave={dragStop}>
                 <ScrollMenu onMouseDown={() => dragStart} onMouseUp={() => dragStop} onMouseMove={handleDrag}>
                     {cards &&
-                        cards.map((props, i) => {
+                        cards.map((props: Workout, i: number) => {
                             const marginRight = cards.length - 1 === i ? 'mr-96' : 'mr-5';
                             return (
                                 props !== null && (
                                     <div className={`${marginRight} cursor-grab select-none`} key={i}>
                                         {props.title ? <Component {...props} index={i} /> : <DefaultCard index={i} />}
+                                        {showDay && (
+                                            <h2 className='font-heading text-center mt-4'>
+                                                {daysOfTheWeek[i].toUpperCase()}
+                                            </h2>
+                                        )}
                                     </div>
                                 )
                             );
@@ -46,7 +58,3 @@ const ScrollCards = ({ cards, Component }) => {
 };
 
 export default ScrollCards;
-
-{
-    /* <Component {...props} /> */
-}

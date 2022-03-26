@@ -1,3 +1,5 @@
+import { Exercise } from '../types';
+
 export const formatSeconds = (seconds: number) => {
     if (seconds > 60) {
         const remainder = seconds % 60;
@@ -18,6 +20,6 @@ export const formatSecondsCondensed = (seconds: number) => {
     }
 };
 
-export const calculateTotalTime = (exercisesArr: []) => {
-    return exercisesArr.reduce((acc, { time }) => acc + time, 0);
+export const calculateTotalTime = (exercisesArr: [] | Exercise[]) => {
+    return exercisesArr.reduce((acc: number, { time }: { time: number }) => acc + time, 0);
 };

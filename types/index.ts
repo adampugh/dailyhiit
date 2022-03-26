@@ -6,17 +6,19 @@ export type Exercise = {
     time: number;
 };
 
-export type WorkoutType = {
+export type Workout = {
     id: string;
     title: string;
     index: number;
     img: string;
-    exercises: [];
+    exercises: Exercise[];
     category: Category[];
     intensity: string;
     button?: boolean;
     time?: number;
 };
+
+export type WorkoutType = {} | Workout;
 
 export type FormValues = {
     email: string;

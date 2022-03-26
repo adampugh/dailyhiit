@@ -5,8 +5,8 @@ import { useRouter } from 'next/router';
 import { getDayIndex } from '../utils/dates';
 import { WorkoutType } from '../types';
 
-const getQueryParams = (query) => {
-    const getParams = (params, param: string) => {
+const getQueryParams = (query: string) => {
+    const getParams = (params: { [key: string]: string }, param: string) => {
         const [key, value] = param.split('=');
         params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
         return params;
@@ -19,8 +19,8 @@ type UserContextType = {
     weeklyWorkouts: WorkoutType[] | [];
     weeklyStats: [];
     todaysWorkout: WorkoutType | {};
-    addWorkout: (workout: WorkoutType) => {};
-    deleteWorkout: (index: number) => {};
+    addWorkout: (workout: WorkoutType) => void;
+    deleteWorkout: (index: number) => void;
 };
 
 const userContext = createContext({
@@ -35,19 +35,21 @@ export function UserContextProvider({ children }) {
     // update these - might break if checking for null
     const [weeklyWorkouts, setWeeklyWorkouts] = useState([null]);
     const [weeklyStats, setWeeklyStats] = useState(null);
-    const [todaysWorkout, setTodaysWorkout] = useState(null);
+    const [todaysWorkout, setTodaysWorkout] = useState<WorkoutType | {}>({});
     const { authUser } = useAuth();
     const router = useRouter();
 
     const fetchUserData = () => {
-        const userRef = db.collection('users').doc(authUser.uid);
-        userRef.get().then((doc) => {
-            const userData = doc.data();
-            const { weeklyWorkouts, weeklyStats } = userData;
-            setWeeklyWorkouts(weeklyWorkouts);
-            setWeeklyStats(weeklyStats);
-            setTodaysWorkout(weeklyWorkouts[getDayIndex()]);
-        });
+        if (authUser !== null) {
+            const userRef = db.collection('users').doc(authUser.uid);
+            userRef.get().then((doc) => {
+                const userData = doc.data();
+                const { weeklyWorkouts, weeklyStats } = userData;
+                setWeeklyWorkouts(weeklyWorkouts);
+                setWeeklyStats(weeklyStats);
+                setTodaysWorkout(weeklyWorkouts[getDayIndex()]);
+            });
+        }
     };
 
     useEffect(() => {

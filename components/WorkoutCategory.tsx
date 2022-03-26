@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../lib/firebase';
+import { Workout } from '../types';
 
 import Category from './Category';
 
 const WorkoutCategory = () => {
-    const [upperBodyWorkouts, setUpperBodyWorkouts] = useState([]);
-    const [lowerBodyWorkouts, setLowerBodyWorkouts] = useState([]);
-    const [fullBodyWorkouts, setfullBodyWorkouts] = useState([]);
+    const [upperBodyWorkouts, setUpperBodyWorkouts] = useState<Workout[] | []>([]);
+    const [lowerBodyWorkouts, setLowerBodyWorkouts] = useState<Workout[] | []>([]);
+    const [fullBodyWorkouts, setfullBodyWorkouts] = useState<Workout[] | []>([]);
 
     useEffect(() => {
         async function fetchWorkouts() {
             const querySnapshot = await getDocs(collection(db, 'workouts'));
             querySnapshot.forEach((doc) => {
-                const workout = { id: doc.id, ...doc.data() };
+                const workout = { ...(doc.data() as Workout), id: doc.id };
                 workout.category.map((categoryName: string) => {
                     if (categoryName === 'upperBody')
                         setUpperBodyWorkouts((prevWorkouts) => [...prevWorkouts, workout]);

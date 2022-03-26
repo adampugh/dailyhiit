@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { formatSecondsCondensed, formatSeconds } from '../utils/formatSeconds';
 import { useUser } from '../context/UserContext';
+import useTotalTime from '../utils/useTotalTime';
+import { Workout, Exercise } from '../types';
 
 const Workout = () => {
     const [running, setRunning] = useState(false);
@@ -12,17 +14,16 @@ const Workout = () => {
     const [exerciseName, setExerciseName] = useState('');
     const [nextExercise, setNextExercise] = useState({ name: '', id: '', time: 0 });
     const { todaysWorkout } = useUser();
-    const { time, img, exercises, title, intensity } = todaysWorkout;
-
-    console.log(time);
+    const { img, exercises, title, intensity } = todaysWorkout as Workout;
+    const totalTime = useTotalTime(exercises);
 
     useEffect(() => {
         if (!exercises[exerciseIndex]) {
             setCompleted(true);
         } else {
-            const { time, name } = exercises[exerciseIndex];
+            const { time, name }: Exercise = exercises[exerciseIndex];
             if (exercises[exerciseIndex + 1]) {
-                const { time, name, id } = exercises[exerciseIndex + 1];
+                const { time, name, id }: Exercise = exercises[exerciseIndex + 1];
                 setNextExercise({ time, name: name.toUpperCase(), id });
             } else {
                 setNextExercise({ name: 'COMPLETE', time: 0, id: '' });
@@ -64,7 +65,7 @@ const Workout = () => {
                     backgroundSize: 'cover',
                 }}>
                 <div>
-                    <FontAwesomeIcon icon={faClock} /> {time}
+                    <FontAwesomeIcon icon={faClock} /> {totalTime}
                 </div>
                 <div className='self-center text-center'>
                     {completed ? (

@@ -2,12 +2,8 @@
 
 -   make responsive
 -   add chart js
--   set total time on card
--   style info card
 -   fb auth
--   setup private/public routes
 -   finish ts
--   fix clock bug
 -   add test suite
 -   tidy up
 

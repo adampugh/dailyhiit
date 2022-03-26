@@ -2,22 +2,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { useEffect, useState } from 'react';
-import { formatSeconds, calculateTotalTime } from '../utils/formatSeconds';
+import useTotalTime from '../utils/useTotalTime';
 import { useRouter } from 'next/router';
 import { useUser } from '../context/UserContext';
-import { WorkoutType } from '../types';
+import { Workout } from '../types';
 
-const Card = ({ title, intensity, img, exercises, index }: WorkoutType) => {
-    const [totalTime, setTotalTime] = useState('');
+const Card = ({ title, intensity, img, exercises, index }: Workout) => {
     const [canDelete, setCanDelete] = useState(true);
     const { asPath } = useRouter();
     const { deleteWorkout } = useUser();
-
-    useEffect(() => {
-        const totalTime = calculateTotalTime(exercises);
-        const formattedTime = formatSeconds(totalTime);
-        setTotalTime(formattedTime);
-    }, []);
+    const totalTime = useTotalTime(exercises);
 
     useEffect(() => {
         if (asPath !== '/dashboard') {
