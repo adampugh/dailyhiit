@@ -9,7 +9,7 @@ import { WorkoutType } from '../types';
 
 const Card = ({ title, intensity, img, exercises, index }: WorkoutType) => {
     const [totalTime, setTotalTime] = useState('');
-    const [canDelete, setCanDelete] = useState(false);
+    const [canDelete, setCanDelete] = useState(true);
     const { asPath } = useRouter();
     const { deleteWorkout } = useUser();
 
@@ -20,8 +20,8 @@ const Card = ({ title, intensity, img, exercises, index }: WorkoutType) => {
     }, []);
 
     useEffect(() => {
-        if (asPath === '/dashboard') {
-            setCanDelete(true);
+        if (asPath !== '/dashboard') {
+            setCanDelete(false);
         }
     }, []);
 

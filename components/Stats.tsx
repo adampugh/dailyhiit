@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { format, compareAsc } from 'date-fns';
+
 import { useUser } from '../context/UserContext';
 import { getDayIndex } from '../utils/dates';
 
@@ -7,6 +9,8 @@ import DefaultCard from './DefaultCard';
 
 const Stats = () => {
     const { todaysWorkout } = useUser();
+    const date = format(new Date(), 'eeee do MMMM, y');
+    console.log(new Date());
 
     return (
         <>
@@ -14,7 +18,7 @@ const Stats = () => {
                 <div className='container'>
                     <div className='flex justify-between pt-10'>
                         <h3>Today&apos;s Workout</h3>
-                        <h3>Tuesday 22nd March, 2022</h3>
+                        <h3>{date}</h3>
                     </div>
                     <div className='mt-10 mb-10 grid grid-cols-3'>
                         <div>

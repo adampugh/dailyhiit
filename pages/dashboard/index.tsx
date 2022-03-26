@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { useEffect, useState } from 'react';
 import { useUser } from '../../context/UserContext';
 
 import Navbar from '../../components/Navbar';
@@ -8,12 +9,19 @@ import WeekWorkout from '../../components/WeekWorkouts';
 import Footer from '../../components/Footer';
 
 const Dashboard: NextPage = () => {
+    const [loading, setLoading] = useState(true);
     const { weeklyWorkouts, weeklyStats } = useUser();
+
+    useEffect(() => {
+        if (weeklyWorkouts && weeklyStats) {
+            setLoading(false);
+        }
+    }, [weeklyStats, weeklyWorkouts]);
 
     return (
         <div>
             <Navbar />
-            {!weeklyWorkouts && !weeklyStats ? (
+            {loading ? (
                 <Loader />
             ) : (
                 <>
