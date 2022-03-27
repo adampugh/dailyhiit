@@ -3,7 +3,7 @@ import UserButton from './UserButton';
 
 const HomeInfo = () => (
     <section className=' pt-20 pb-20'>
-        <div className='md:container mx-auto grid gap-20 grid-cols-2'>
+        <div className='container mx-auto grid gap-20 grid-cols-1 lg:grid-cols-2'>
             <div className='text-left'>
                 <h2 className='text-xl mt-10 font-heading'>KEEPING TO YOUR FITNESS GOALS</h2>
                 <p className=' pt-6 pb-6'>

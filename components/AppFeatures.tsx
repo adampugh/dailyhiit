@@ -4,7 +4,7 @@ import { faDumbbell } from '@fortawesome/free-solid-svg-icons';
 
 const AppFeatures = () => {
     return (
-        <section className='bg-gradient-to-br from-[#3D3751]/80 to-[#010103]/80'>
+        <section className='hidden xl:block bg-gradient-to-br from-[#3D3751]/80 to-[#010103]/80'>
             <div className='container pt-20 pb-20 '>
                 <h2 className='font-heading text-xl mb-2 border-purple-4000'>APP FEATURES</h2>
                 <div className='text-center bg-gradient-to-bl from-[#7253A0]/40 to-[#3D3751]/10 rounded-3xl pt-10 pb-10 relative'>

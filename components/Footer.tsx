@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Footer = () => (
     <footer className='bg-hiit-black py-6 px-6'>
-        <div className='container flex mx-auto items-center justify-between'>
+        <div className='text-center md:text-left container md:flex mx-auto items-center justify-between'>
             <Link href='/'>
                 <>
                     <a className='inline-flex items-center'>
@@ -13,7 +13,7 @@ const Footer = () => (
                 </>
             </Link>
             <p>© 2022 Design by Kokonoka</p>
-            <div className='text-right'>
+            <div className='md:text-right'>
                 <p>204 Hawley Rd.</p>
                 <p>Water Town</p>
                 <p>LR4 8BH</p>

@@ -38,7 +38,7 @@ const ScrollCards = ({ cards, Component, showDay = false }: ScrollCardsPropType)
                 <ScrollMenu onMouseDown={() => dragStart} onMouseUp={() => dragStop} onMouseMove={handleDrag}>
                     {cards &&
                         cards.map((props: Workout, i: number) => {
-                            const marginRight = cards.length - 1 === i ? 'mr-96' : 'mr-5';
+                            const marginRight = cards.length - 1 === i ? 'mr-24 md:mr-60' : 'mr-5';
                             return (
                                 props !== null && (
                                     <div className={`${marginRight} cursor-grab select-none`} key={i}>

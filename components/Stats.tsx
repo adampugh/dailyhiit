@@ -37,8 +37,8 @@ const Stats = () => {
                         <h3 className='font-heading'>TODAY&apos;S WORKOUT</h3>
                         <h3>{date}</h3>
                     </div>
-                    <div className='mt-4 mb-10 grid grid-cols-3'>
-                        <div>
+                    <div className='mt-4 mb-10 grid grid-cols-1 lg:grid-cols-3'>
+                        <div className='text-center lg:text-left mx-auto md:ml-0'>
                             {todaysWorkout.title ? (
                                 <Link href='/start'>
                                     <a>
@@ -46,15 +46,19 @@ const Stats = () => {
                                     </a>
                                 </Link>
                             ) : (
-                                <DefaultCard index={getDayIndex()} />
+                                <div className='mb-2'>
+                                    <DefaultCard index={getDayIndex()} />
+                                </div>
                             )}
                         </div>
-                        <div className='col-span-2 rounded-3xl bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70 pr-12 pl-12 pt-6 pb-6'>
-                            <div className='flex justify-between text-center justify-items-center'>
-                                <div>
+                        <div className='col-span-2 rounded-3xl bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70 pr-4 pl-4 lg:pr-12 lg:pl-12 pt-6 pb-6'>
+                            <div className='md:flex justify-between text-center justify-items-center'>
+                                <div className='mb-2 '>
                                     <h3>Current Streak</h3>
                                     <p className='text-purple-400 pt-2 font-heading'>
-                                        {currentStreak.streakCount} DAYS
+                                        {currentStreak.streakCount === 1
+                                            ? `${currentStreak.streakCount} DAY`
+                                            : `${currentStreak.streakCount} DAYS`}
                                     </p>
                                 </div>
                                 <div>

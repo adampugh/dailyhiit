@@ -21,11 +21,11 @@ const Navbar = () => {
             <div className='container mx-auto flex justify-between items-center'>
                 <Link href={authUser ? '/dashboard' : '/'}>
                     <a>
-                        <h2 className='font-heading w-52'>DAILYHIIT</h2>
+                        <h2 className='font-heading lg:w-52'>DAILYHIIT</h2>
                     </a>
                 </Link>
                 <Image src='/images/dumbbell.png' alt='daily hiit logo' height={40} width={40} />
-                <div className='w-52'>
+                <div className='lg:w-52'>
                     {authUser ? <LogOutButton handleSignOut={handleSignOut} /> : <UserButton text='LOGIN' />}
                 </div>
             </div>
