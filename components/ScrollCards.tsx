@@ -19,6 +19,7 @@ const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', '
 const ScrollCards = ({ cards, Component, showDay = false }: ScrollCardsPropType) => {
     useEffect(() => {
         setScrollBarWidth();
+        return () => setScrollBarWidth;
     }, [cards]);
 
     const { dragStart, dragStop, dragMove, dragging } = useDrag();

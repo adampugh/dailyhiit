@@ -65,7 +65,7 @@ const Workout = () => {
                     backgroundSize: 'cover',
                 }}>
                 <div>
-                    <FontAwesomeIcon icon={faClock} /> {totalTime}
+                    <FontAwesomeIcon icon={faClock} className='h-4 inline' /> {totalTime}
                 </div>
                 <div className='self-center text-center'>
                     {completed ? (

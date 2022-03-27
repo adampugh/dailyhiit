@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import { format, compareAsc } from 'date-fns';
+import { format } from 'date-fns';
 
 import { useUser } from '../context/UserContext';
 import { getDayIndex } from '../utils/dates';
 
 import Card from './Card';
 import DefaultCard from './DefaultCard';
+import StatsChart from './StatsChart';
 
 const Stats = () => {
     const { todaysWorkout } = useUser();
@@ -45,6 +46,9 @@ const Stats = () => {
                                     <h3>Workout Time</h3>
                                     <p className='text-purple-400 pt-2 font-heading'>3 HOURS</p>
                                 </div>
+                            </div>
+                            <div>
+                                <StatsChart />
                             </div>
                         </div>
                     </div>
