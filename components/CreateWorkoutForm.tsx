@@ -25,7 +25,7 @@ const CreateWorkoutForm = () => {
 
         db.collection('workouts')
             .add({ ...values })
-            .then((docRef) => {
+            .then(() => {
                 setSubmitting(false);
                 resetForm();
                 setMessage('Added Workout');

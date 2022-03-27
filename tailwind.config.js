@@ -8,10 +8,7 @@ module.exports = {
                 sm: '1rem',
                 md: '2rem',
                 lg: '8rem',
-                // xl: '5rem',
-                // '2xl': '6rem',
             },
-            // padding: '8rem',
         },
         fontFamily: {
             heading: ["'Reem Kufi'", 'sans-serif'],

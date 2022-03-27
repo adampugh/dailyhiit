@@ -4,7 +4,6 @@ import setScrollBarWidth from 'set-scrollbar-width';
 import { Workout } from '../types';
 
 import useDrag from '../utils/useDrag';
-import Card from './Card';
 import DefaultCard from './DefaultCard';
 
 type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;

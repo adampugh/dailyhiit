@@ -17,7 +17,7 @@ const LoginInForm = () => {
         setSubmitting(true);
         setError(null);
         signInWithEmailAndPassword(email, password)
-            .then((authUser) => {
+            .then(() => {
                 setSubmitting(false);
                 router.push('/dashboard');
             })
@@ -64,7 +64,6 @@ const LoginInForm = () => {
                             className='text-purple-900 pl-2 pr-2 rounded-3xl w-full'
                         />
                         <ErrorMessage name='password' component='div' />
-
                         <div className='mt-10 text-center'>
                             <div className='pb-5'>
                                 <Link href='/signup'>

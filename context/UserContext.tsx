@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthUserContext';
 import { useRouter } from 'next/router';
 import { getDayIndex } from '../utils/dates';
 import { WorkoutType } from '../types';
-import { isToday, isYesterday, subDays, format, differenceInDays } from 'date-fns';
+import { isToday, isYesterday, format, differenceInDays } from 'date-fns';
 
 const getQueryParams = (query: string) => {
     const getParams = (params: { [key: string]: string }, param: string) => {
@@ -35,10 +35,9 @@ const userContext = createContext({
 });
 
 export function UserContextProvider({ children }) {
-    // update these - might break if checking for null
     const [weeklyWorkouts, setWeeklyWorkouts] = useState([null]);
     const [weeklyStats, setWeeklyStats] = useState(null);
-    const [todaysWorkout, setTodaysWorkout] = useState<WorkoutType | {}>(null);
+    const [todaysWorkout, setTodaysWorkout] = useState<WorkoutType | {} | null>(null);
     const { authUser } = useAuth();
     const router = useRouter();
 
@@ -80,31 +79,6 @@ export function UserContextProvider({ children }) {
             .then(() => fetchUserData())
             .catch((error) => console.log('Error adding workout: ' + error.message));
     };
-
-    const weeklyStats1 = {
-        completedWorkouts: 0,
-        totalWorkoutTime: 0,
-        currentStreak: { lastWorkout: 0, streakCount: 0 },
-        workoutGraphData: {
-            monday: { date: 1647880420089, totalTime: 300 }, // show last monday
-            tuesday: { date: 1000, totalTime: 900 }, // don't show long time ago
-            wednesday: { date: 0, totalTime: 0 },
-            thursday: { date: 0, totalTime: 0 },
-            friday: { date: 0, totalTime: 800 },
-            saturday: { date: 0, totalTime: 0 },
-            sunday: { date: 1647794020089, totalTime: 360 }, // only show today
-        },
-    };
-
-    // get day
-    // day === today
-    //      YES - add to totalTime
-    //      NO - replace day
-
-    // check date within calendar week
-    // date in calendar week ?
-    //      YES - don't update
-    //      NO - remove
 
     const getUpdatedGraphData = ({ workoutGraphData }, time) => {
         const updatedGraphData = { ...workoutGraphData };
@@ -163,8 +137,6 @@ export function UserContextProvider({ children }) {
                 .then(() => fetchUserData())
                 .catch((error) => console.log('Error adding workout: ' + error.message));
         });
-
-        // })
     };
 
     const userData: UserContextType = {

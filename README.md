@@ -1,8 +1,7 @@
 ## TODO
 
--   make responsive
--   tidy up
 -   fb auth
+-   deploy
 
 -   finish ts
 -   add test suite

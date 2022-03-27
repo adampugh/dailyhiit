@@ -21,8 +21,6 @@ a {
 }
 
 * {
-    /* margin: 0;
-    padding: 0; */
     box-sizing: border-box;
 }
 
@@ -37,6 +35,5 @@ a {
 }
 
 .blur {
-    /* filter: blur(0.3rem); */
     backdrop-filter: blur(2px);
 }

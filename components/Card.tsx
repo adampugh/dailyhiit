@@ -1,11 +1,11 @@
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
-import { useEffect, useState } from 'react';
-import useTotalTime from '../utils/useTotalTime';
 import { useRouter } from 'next/router';
 import { useUser } from '../context/UserContext';
 import { Workout } from '../types';
+import useTotalTime from '../utils/useTotalTime';
 
 const Card = ({ title, intensity, img, exercises, index }: Workout) => {
     const [canDelete, setCanDelete] = useState(true);

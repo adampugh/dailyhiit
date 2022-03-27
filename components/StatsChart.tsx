@@ -8,7 +8,6 @@ import {
     Tooltip,
     Legend,
     ChartOptions,
-    BarOptions,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { getDayIndex } from '../utils/dates';
@@ -57,16 +56,19 @@ const options: ChartOptions = {
     },
 };
 
-const StatsChart = ({ workoutGraphData }) => {
-    const [gradient, setGradient] = useState('');
-
+const getLabels = () => {
     const daysOfTheWeek = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'];
     const day = daysOfTheWeek[getDayIndex()];
-
     const index = daysOfTheWeek.indexOf(day);
     const start = daysOfTheWeek.slice(index);
     const end = daysOfTheWeek.slice(0, index);
-    const labels = [...start, ...end];
+    return [...start, ...end];
+};
+
+const StatsChart = ({ workoutGraphData }) => {
+    const [gradient, setGradient] = useState('');
+
+    const labels = getLabels();
     const totalTimeData = labels.map((v) => Math.floor(workoutGraphData[v.toLowerCase()].totalTime / 60));
 
     const chartRef = useCallback((node) => {

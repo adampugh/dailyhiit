@@ -17,11 +17,8 @@ export default function useFirebaseAuth() {
         }
 
         setLoading(true);
-
-        var formattedUser = formatAuthUser(authState);
-
+        const formattedUser = formatAuthUser(authState);
         setAuthUser(formattedUser);
-
         setLoading(false);
     };
 
@@ -31,10 +28,8 @@ export default function useFirebaseAuth() {
     };
 
     const signInWithEmailAndPassword = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
-
     const createUserWithEmailAndPassword = (email, password) =>
         firebase.auth().createUserWithEmailAndPassword(email, password);
-
     const signOut = () => firebase.auth().signOut().then(clear);
 
     useEffect(() => {

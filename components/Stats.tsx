@@ -8,21 +8,6 @@ import { formatSeconds } from '../utils/formatSeconds';
 import Card from './Card';
 import DefaultCard from './DefaultCard';
 import StatsChart from './StatsChart';
-import { Workout } from '../types';
-import { useEffect } from 'react';
-
-// completedWorkouts: 0,
-// totalWorkoutTime: 0,
-// currentStreak: { lastWorkout: '', addedToday: false, streakCount: 0 },
-// workoutGraphData: {
-//     monday: { date: 0, totalTime: 0 },
-//     tuesday: { date: 0, totalTime: 0 },
-//     wednesday: { date: 0, totalTime: 0 },
-//     thursday: { date: 0, totalTime: 0 },
-//     friday: { date: 0, totalTime: 0 },
-//     saturday: { date: 0, totalTime: 0 },
-//     sunday: { date: 0, totalTime: 0 },
-// },
 
 const Stats = () => {
     const { todaysWorkout, weeklyStats } = useUser();
