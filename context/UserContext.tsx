@@ -27,6 +27,7 @@ type UserContextType = {
 };
 
 const userContext = createContext({
+    isAdmin: null,
     weeklyWorkouts: [],
     weeklyStats: [],
     todaysWorkout: null,
@@ -37,6 +38,7 @@ const userContext = createContext({
 
 export function UserContextProvider({ children }) {
     const [weeklyWorkouts, setWeeklyWorkouts] = useState([null]);
+    const [isAdmin, setIsAdmin] = useState(null);
     const [weeklyStats, setWeeklyStats] = useState(null);
     const [todaysWorkout, setTodaysWorkout] = useState<WorkoutType | {} | null>(null);
     const { authUser } = useAuth();
@@ -47,7 +49,8 @@ export function UserContextProvider({ children }) {
             const userRef = db.collection('users').doc(authUser.uid);
             userRef.get().then((doc) => {
                 const userData = doc.data();
-                const { weeklyWorkouts, weeklyStats } = userData;
+                const { weeklyWorkouts, weeklyStats, admin } = userData;
+                setIsAdmin(!!admin);
                 setWeeklyWorkouts(weeklyWorkouts);
                 setWeeklyStats(weeklyStats);
                 setTodaysWorkout(weeklyWorkouts[getDayIndex()]);
@@ -141,6 +144,7 @@ export function UserContextProvider({ children }) {
     };
 
     const userData: UserContextType = {
+        isAdmin,
         weeklyWorkouts,
         weeklyStats,
         todaysWorkout,

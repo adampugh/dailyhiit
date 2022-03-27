@@ -40,7 +40,7 @@ const SignUpForm = () => {
                         weeklyStats: {
                             completedWorkouts: 0,
                             totalWorkoutTime: 0,
-                            currentStreak: { lastWorkout: '', addedToday: false, streakCount: 0 },
+                            currentStreak: { lastWorkout: '', streakCount: 0 },
                             workoutGraphData: {
                                 monday: { date: 0, totalTime: 0 },
                                 tuesday: { date: 0, totalTime: 0 },
