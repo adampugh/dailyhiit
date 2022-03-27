@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { formatSeconds } from '../utils/formatSeconds';
 
 const WorkoutInfo = ({ title, intensity, exercises }) => (

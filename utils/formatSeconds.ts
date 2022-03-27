@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Exercise } from '../types';
 
 export const formatSeconds = (seconds: number) => {

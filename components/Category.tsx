@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Loader from './Loader';
 import ScrollCards from './ScrollCards';
 import CardInfo from './CardInfo';

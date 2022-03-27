@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useState } from 'react';
 import { db } from '../lib/firebase';

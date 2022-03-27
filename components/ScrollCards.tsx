@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect } from 'react';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import setScrollBarWidth from 'set-scrollbar-width';

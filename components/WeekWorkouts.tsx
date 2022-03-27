@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState } from 'react';
 import { WorkoutType, Workout } from '../types';
 import Card from './Card';
