@@ -3,13 +3,30 @@ import { format } from 'date-fns';
 
 import { useUser } from '../context/UserContext';
 import { getDayIndex } from '../utils/dates';
+import { formatSeconds } from '../utils/formatSeconds';
 
 import Card from './Card';
 import DefaultCard from './DefaultCard';
 import StatsChart from './StatsChart';
+import { Workout } from '../types';
+import { useEffect } from 'react';
+
+// completedWorkouts: 0,
+// totalWorkoutTime: 0,
+// currentStreak: { lastWorkout: '', addedToday: false, streakCount: 0 },
+// workoutGraphData: {
+//     monday: { date: 0, totalTime: 0 },
+//     tuesday: { date: 0, totalTime: 0 },
+//     wednesday: { date: 0, totalTime: 0 },
+//     thursday: { date: 0, totalTime: 0 },
+//     friday: { date: 0, totalTime: 0 },
+//     saturday: { date: 0, totalTime: 0 },
+//     sunday: { date: 0, totalTime: 0 },
+// },
 
 const Stats = () => {
-    const { todaysWorkout } = useUser();
+    const { todaysWorkout, weeklyStats } = useUser();
+    const { totalWorkoutTime, completedWorkouts, currentStreak, workoutGraphData } = weeklyStats;
     const date = format(new Date(), 'eeee do MMMM, y');
 
     return (
@@ -36,19 +53,23 @@ const Stats = () => {
                             <div className='flex justify-between text-center justify-items-center'>
                                 <div>
                                     <h3>Current Streak</h3>
-                                    <p className='text-purple-400 pt-2 font-heading'>17 DAYS</p>
+                                    <p className='text-purple-400 pt-2 font-heading'>
+                                        {currentStreak.streakCount} DAYS
+                                    </p>
                                 </div>
                                 <div>
                                     <h3>Workouts Completed</h3>
-                                    <p className='text-purple-400 pt-2 font-heading'>17</p>
+                                    <p className='text-purple-400 pt-2 font-heading'>{completedWorkouts}</p>
                                 </div>
                                 <div>
                                     <h3>Workout Time</h3>
-                                    <p className='text-purple-400 pt-2 font-heading'>3 HOURS</p>
+                                    <p className='text-purple-400 pt-2 font-heading'>
+                                        {formatSeconds(totalWorkoutTime)}
+                                    </p>
                                 </div>
                             </div>
                             <div>
-                                <StatsChart />
+                                <StatsChart workoutGraphData={workoutGraphData} />
                             </div>
                         </div>
                     </div>

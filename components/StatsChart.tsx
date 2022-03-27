@@ -1,11 +1,21 @@
 import React, { useCallback, useState } from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    ChartOptions,
+    BarOptions,
+} from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { getDayIndex } from '../utils/dates';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export const options = {
+const options: ChartOptions = {
     plugins: {
         title: {
             text: 'Chart.js Bar Chart - Stacked',
@@ -30,7 +40,7 @@ export const options = {
                 color: '#fff',
                 font: {
                     family: 'Sarabun',
-                    weight: 100,
+                    weight: '100',
                 },
             },
         },
@@ -40,23 +50,24 @@ export const options = {
                 color: '#fff',
                 font: {
                     family: 'Sarabun',
-                    weight: 100,
+                    weight: '100',
                 },
             },
         },
     },
 };
 
-const daysOfTheWeek = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'];
-const day = daysOfTheWeek[getDayIndex()];
-
-const index = daysOfTheWeek.indexOf(day);
-const start = daysOfTheWeek.slice(index);
-const end = daysOfTheWeek.slice(0, index);
-const labels = [...start, ...end];
-
-const StatsChart = () => {
+const StatsChart = ({ workoutGraphData }) => {
     const [gradient, setGradient] = useState('');
+
+    const daysOfTheWeek = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'];
+    const day = daysOfTheWeek[getDayIndex()];
+
+    const index = daysOfTheWeek.indexOf(day);
+    const start = daysOfTheWeek.slice(index);
+    const end = daysOfTheWeek.slice(0, index);
+    const labels = [...start, ...end];
+    const totalTimeData = labels.map((v) => Math.floor(workoutGraphData[v.toLowerCase()].totalTime / 60));
 
     const chartRef = useCallback((node) => {
         if (node !== null) {
@@ -72,7 +83,7 @@ const StatsChart = () => {
         datasets: [
             {
                 label: 'Dataset 1',
-                data: [100, 200, 300, 400, 500, 600, 700],
+                data: totalTimeData,
                 backgroundColor: gradient,
                 stack: 'Stack 0',
             },
@@ -81,7 +92,7 @@ const StatsChart = () => {
 
     return (
         <div className='mt-4'>
-            <Bar options={options} data={data} ref={chartRef} />
+            <Bar options={options} data={data} ref={chartRef} defaults={options} />
         </div>
     );
 };

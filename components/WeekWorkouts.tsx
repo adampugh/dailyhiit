@@ -3,7 +3,7 @@ import { WorkoutType, Workout } from '../types';
 import Card from './Card';
 import ScrollCards from './ScrollCards';
 
-const WeekWorkouts = ({ weeklyWorkouts }: { weeklyWorkouts: WorkoutType[] }) => {
+const WeekWorkouts = ({ weeklyWorkouts }: { weeklyWorkouts: Workout[] }) => {
     const [weeklyWorkoutsArray, setWeeklyWorkoutsArray] = useState<WorkoutType | []>([]);
 
     useEffect(() => {

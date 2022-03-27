@@ -44,12 +44,15 @@ const Card = ({ title, intensity, img, exercises, index }: Workout) => {
                 <h2 className='font-heading'>{title}</h2>
                 <div className='mr-4'>
                     <p className='inline'>Intensity </p>
-                    {new Array(+intensity).fill('').map((v, i) => (
-                        <div
-                            className='ml-2 inline-block rounded-full bg-green-300'
-                            style={{ height: '8px', width: '32px' }}
-                            key={i}></div>
-                    ))}
+                    {!!intensity &&
+                        new Array(+intensity)
+                            .fill('')
+                            .map((v, i) => (
+                                <div
+                                    className='ml-2 inline-block rounded-full bg-green-300'
+                                    style={{ height: '8px', width: '32px' }}
+                                    key={i}></div>
+                            ))}
                 </div>
             </div>
         </div>

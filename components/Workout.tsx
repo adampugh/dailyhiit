@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
-import { formatSecondsCondensed, formatSeconds } from '../utils/formatSeconds';
+import { formatSecondsCondensed, formatSeconds, calculateTotalTime } from '../utils/formatSeconds';
 import { useUser } from '../context/UserContext';
 import useTotalTime from '../utils/useTotalTime';
 import { Workout, Exercise } from '../types';
@@ -13,13 +13,15 @@ const Workout = () => {
     const [exerciseIndex, setExerciseIndex] = useState(0);
     const [exerciseName, setExerciseName] = useState('');
     const [nextExercise, setNextExercise] = useState({ name: '', id: '', time: 0 });
-    const { todaysWorkout } = useUser();
-    const { img, exercises, title, intensity } = todaysWorkout as Workout;
+    const { todaysWorkout, updateStats } = useUser();
+    const { img, exercises, title, intensity } = todaysWorkout as Workout; // use reducer?
     const totalTime = useTotalTime(exercises);
+    const totalTimeCalculated = calculateTotalTime(exercises);
 
     useEffect(() => {
         if (!exercises[exerciseIndex]) {
             setCompleted(true);
+            updateStats(totalTimeCalculated);
         } else {
             const { time, name }: Exercise = exercises[exerciseIndex];
             if (exercises[exerciseIndex + 1]) {

@@ -16,6 +16,7 @@ const Dashboard: NextPage = () => {
 
     useEffect(() => {
         if (weeklyWorkouts && weeklyStats) {
+            console.log(weeklyStats, weeklyWorkouts);
             setLoading(false);
         }
     }, [weeklyStats, weeklyWorkouts]);
