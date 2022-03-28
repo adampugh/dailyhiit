@@ -66,7 +66,7 @@ const SignUpForm = () => {
     };
 
     return (
-        <div className='mx-auto rounded-3xl p-10 max-w-screen-sm bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70 mx-auto w-96'>
+        <div className='mx-auto rounded-3xl p-10 max-w-screen-sm bg-gradient-to-br from-[#1B0E28]/40 to-[#2A2830]/70 mx-auto w-96 mt-10 mb-10'>
             <h1 className='font-heading text-center'>SIGN UP</h1>
             <h1 className='text-red-400 text-center'>{error}</h1>
             <Formik

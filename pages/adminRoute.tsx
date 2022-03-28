@@ -13,7 +13,6 @@ const AdminRoute = ({ children }) => {
     const router = useRouter();
 
     useEffect(() => {
-        console.log(loading, isAdmin);
         if (!loading && !isAdmin) {
             authUser ? router.push('/dashboard') : router.push('/');
         }
