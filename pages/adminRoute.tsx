@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/AuthUserContext';
 import { useUser } from '../context/UserContext';
@@ -13,14 +13,15 @@ const AdminRoute = ({ children }) => {
     const router = useRouter();
 
     useEffect(() => {
-        if (!loading && isAdmin === false) {
+        console.log(loading, isAdmin);
+        if (!loading && !isAdmin) {
             authUser ? router.push('/dashboard') : router.push('/');
         }
     }, [authUser, loading, isAdmin]);
 
     return (
         <>
-            {loading && isAdmin === null ? (
+            {loading || !isAdmin ? (
                 <>
                     <Navbar />
                     <Loader />
