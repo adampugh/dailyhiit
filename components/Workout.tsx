@@ -57,7 +57,7 @@ const Workout = () => {
                 <div
                     className='h-screen pt-10 pb-10 flex justify-center blur relative -m-2'
                     style={{
-                        backgroundImage: `linear-gradient(4deg, rgba(18,18,18,0.8743872549019608) 0%, rgba(91,91,91,0.5466561624649859) 35%, rgba(0,212,255,0) 100%), url("${img}")`,
+                        backgroundImage: `linear-gradient(4deg,rgba(18,18,18,0.8743872549019608) 0%, rgba(175, 175, 160, 0.26) 35%, rgba(0,17,23,0.5) 100%), url("${img}")`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}></div>
