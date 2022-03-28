@@ -66,7 +66,7 @@ const Workout = () => {
                 onClick={() => setRunning(!running)}
                 className='rounded-3xl h-5/6 w-80 pt-6 pb-4 mt-20 flex flex-col justify-between pl-8 pr-8 inline-block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'
                 style={{
-                    backgroundImage: `linear-gradient(4deg, rgba(18,18,18,0.8743872549019608) 0%, rgba(91,91,91,0.5466561624649859) 35%, rgba(0,212,255,0) 100%), url("${img}")`,
+                    backgroundImage: `linear-gradient(4deg, rgba(18,18,18,0.8743872549019608) 0%, rgba(175, 175, 160, 0.26) 35%, rgba(0,17,23,0.5) 100%), url("${img}")`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}>
