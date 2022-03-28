@@ -5,6 +5,8 @@ import { install } from 'resize-observer';
 import type { AppProps } from 'next/app';
 
 if (typeof window !== 'undefined') {
+    // only run client side
+    // resize observer not supported in safari < 13.4
     if (!window.ResizeObserver) install();
 }
 

@@ -128,7 +128,6 @@ export function UserContextProvider({ children }) {
         const userRef = db.collection('users').doc(`${authUser.uid}`);
         userRef.get().then((doc) => {
             const { weeklyStats } = doc.data();
-            console.log(weeklyStats);
             const updatedStats = {
                 ...weeklyStats,
                 completedWorkouts: +weeklyStats.completedWorkouts + 1,
