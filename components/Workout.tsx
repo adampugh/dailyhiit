@@ -68,6 +68,7 @@ const Workout = () => {
                 style={{
                     backgroundImage: `linear-gradient(4deg, rgba(18,18,18,0.8743872549019608) 0%, rgba(91,91,91,0.5466561624649859) 35%, rgba(0,212,255,0) 100%), url("${img}")`,
                     backgroundSize: 'cover',
+                    backgroundPosition: 'center',
                 }}>
                 <div>
                     <FontAwesomeIcon icon={faClock} className='h-4 inline' /> {totalTime}

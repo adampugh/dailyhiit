@@ -12,9 +12,6 @@
 
 ## TODO
 
--   fb auth
--   deploy
-
 -   finish ts
 -   add test suite
 
