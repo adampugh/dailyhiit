@@ -34,7 +34,7 @@ const ScrollCards = ({ cards, Component, showDay = false }: ScrollCardsPropType)
 
     return (
         <div className='overflow-x-hidden mr-break-out'>
-            <div className='pt-6 mr-break-out' onMouseLeave={dragStop}>
+            <div className='pt-4 mr-break-out' onMouseLeave={dragStop}>
                 <ScrollMenu onMouseDown={() => dragStart} onMouseUp={() => dragStop} onMouseMove={handleDrag}>
                     {cards &&
                         cards.map((props: Workout, i: number) => {
