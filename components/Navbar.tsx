@@ -24,7 +24,7 @@ const Navbar = () => {
                         <h2 className='font-heading lg:w-52'>DAILYHIIT</h2>
                     </a>
                 </Link>
-                <Image src='/images/dumbbell.png' alt='daily hiit logo' height={40} width={40} />
+                <Image src='/images/dumbbell.png' alt='daily hiit logo' height={48} width={45} />
                 <div className='lg:w-52'>
                     {authUser ? <LogOutButton handleSignOut={handleSignOut} /> : <UserButton text='LOGIN' />}
                 </div>
